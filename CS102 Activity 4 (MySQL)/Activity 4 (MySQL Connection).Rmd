@@ -1,0 +1,86 @@
+---
+title: "RMD"
+output: html_document
+date: "2024-02-27"
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r}
+install.packages('DBI')
+install.packages('RMariaDB')
+library(RMariaDB)
+library(dplyr,dbplyr)
+library(DBI)
+```
+
+```{r}
+
+
+```
+
+```{r}
+connection <- dbConnect(RMariaDB::MariaDB(),
+                        dsn="MariaDB-connection",
+                        Server = "localhost",
+                        dbname = "movies_2b", 
+                        user = "root", 
+                        password = "")
+dbListTables(connection)
+
+posts_dta <- dbGetQuery(connection, "SELECT * FROM movies_2b.movie_reviews")
+query1 <- "INSERT INTO movie_reviews VALUES('Lord of the Rings' ,'The only movie I don''t want to finish', 'mrmocun', '13/03/2021', '10/10', 'If we consider The Fellowship of the Ring is a history we could consider The Two Towers as a legend and we could consider The Retern of the King as a myth');"
+
+query2 <- "INSERT INTO movie_reviews VALUES('Lord of the Rings', 'Perfect!', 'carlos-grant', '3/28/2012', '10/10', 'This movie and the whole trilogy deserves all the praise it has received.I had been worried about seeing it because of how much Peter Jackson re-wrote Two Towers and presented scenes that undermined some of Tolkien''s fundamental ideas. This time, Jackson followed Tolkien more closely and the worst that can be claimed are sins of omission. It''s a real shame we did''t get to see Christopher Lee in this move he totally rocked in the previous films. Telling us to wait for the extended version isn''t right. Maybe Jackson should have foregone one of the too many endings in ROTK to give Lee some film time. That said, all the elements that worked in the previous movies were absolutely glorious in this film. The one new thing that I would add to so much that has already been written is that big kudos must go to the great Tolkien artists Alan Lee and John Howe whose artistry shaped so much of the imagery from the first moments of FOTR to the final scenes of ROTK. This historic trilogy would not have been the same without them. The LOTR enterprise has clearly been a great labor of love from all who worked on it over the years, and this final installment was a crowning achievement.');"
+
+query3 <- "INSERT INTO movie_reviews VALUES('Lord of the Rings', 'The epic conclusion to one of the greatest film trilogies of all time', 'cricketbat', '2/4/2020', '10/10', 'The Return of the King is an impressive film because it wraps up the Lord of the Rings trilogy in a way that is satisfying for both fans of the books and those who have only seen the movies. This finale is a rollercoaster of emotions, with impressive sets, elaborate costumes, and eye-popping visual effects. The Lord of the Rings was already a great novel, but it has now become one of the greatest film trilogies ever made.');"
+                
+                 
+                
+            
+query4 <- "INSERT INTO movie_reviews VALUES('Lord of the Rings', 'The end of an era', 'zlx_zjlq', '3/24/2020', '10/10', 'A Blu-ray extended version for almost four and a half hours. The scene of the war is still magnificent. It is Frodo''s luck to have a good friend like Sam. Gandalf is still otherworldly and holy. The last part of the play makes my eyes wept. This is the end of the epic blockbuster and an era. But classics will become eternal.');"
+
+
+
+query5 <- "INSERT INTO movie_reviews VALUES('Lord of the Rings', 'What a finale!', 'AnnaPagrati', '8/30/2021', '10/10', 'Simply magnificent! The production is just breath-taking!');"
+  
+query6 <-  "INSERT INTO movie_reviews VALUES('Lord of the Rings', 'Good one', 'bevo-13678', '3/31/2020', '10/10', 'They chucked the ring into a volcano or something.');"
+
+query7 <- "INSERT INTO movie_reviews VALUES('Lord of the Rings', 'A PIECE OF MY SOUL LIVES IN THIS FILM', 'wiltoncarter' , '11/17/2020' , '10/10', 'Still the Greatest Piece of Storytelling Put to Film A Timeless Ageless Classic. I Will Never Get Tired of Watching This Powerhouse Epic A True Masterpiece, And Far As I Am Concerned Still the Greatest Movie Hollywood Has Ever Produced In My Time.');"
+
+query8 <- "INSERT INTO movie_reviews VALUES('Lord of the Rings', 'Almost Perfect', 'view_and_review', '3/2/2021' ,'9/10', 'I can''t say anything that hasn''t already been said. This movie--this trilogy really--is in no need of my praise, so I''ll say that there were just a couple of moments of exasperation for me (which I guess will happen over a three plus hour movie). Among the points of exasperation was a point when I wanted to slap Frodo. I''m sure that part needs no mention.');"
+
+query9 <- "INSERT INTO movie_reviews VALUES('Lord of the Rings', 'Peter Jackson did Tolkien justice', 'cagancelik', '2/12/2022', '10/10', ' By the light of Amazon''s recent massacre of the lore and franchise, I realized how great the original trilogy by Peter Jackson is. Jackson has respected the Tolkien and his writings and refused add any view from any side.');"
+  
+  
+query10 <- "INSERT INTO movie_reviews VALUES('Lord of the Rings', 'A perfect end to my personal favorite trilogy', 'jacobmeyerjkm', '1/30/2020', '10/10', ' What isn''t great about this. This characters are developed wonderfully, the acting is brilliant, the epic effects blow me away, the score is perfect. This is my personal favorite of the three but mind you, it is an extremely hard choice');"
+  
+
+
+
+query_result1 <- dbSendQuery(connection, query1)
+
+query_result2 <- dbExecute(connection, query2)
+
+query_result3 <- dbExecute(connection, query3)
+
+query_result4 <- dbExecute(connection, query4)
+
+
+query_result5 <- dbExecute(connection, query5)
+
+query_result6 <- dbExecute(connection, query6)
+
+query_result7 <- dbExecute(connection, query7)
+
+query_result8 <- dbExecute(connection, query8)
+
+query_result9 <- dbExecute(connection, query9)
+
+query_result10 <- dbExecute(connection, query10)
+
+
+dbDisconnect(connection)
+```
