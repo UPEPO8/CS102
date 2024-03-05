@@ -1,5 +1,6 @@
+install.packages('lubridate')
 library(lubridate)
-A.
+#A.
 #1. Find out, in a single command, which columns of warpbreaks are either numeric or integer.
 str(warpbreaks)
 #2. Is numeric a natural data type for the columns which are stored as such? Convert to integer when necessary.
@@ -13,9 +14,9 @@ new_warpbreak <- as.integer(warpbreaks$breaks)
 as.Date(warpbreaks)
 
 
-B.
+#B.
 #1. Read the complete file using readLines.
-exampleFile <- readLines("C:/exampleFile.txt")
+exampleFile <- readLines("/cloud/project/Practical/exampleFile.txt")
 
 #2. Separate the vector of lines into a vector containing comments and a vector
 #containing the data. Hint: use grepl.
@@ -53,7 +54,9 @@ unlistMatrix
 #colnames for the matrix you just created. 
 
 commentField <- comments[2:4]
-commentField <- gsub(" //", "", commentField)
+commentField <- gsub("//", "", commentField)
 
 colnames(unlistMatrix) <- commentField
 unlistMatrix
+
+write.csv(unlistMatrix, "Practical/finalData.csv")
